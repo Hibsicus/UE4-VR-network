@@ -137,6 +137,12 @@ void AVRPawn::UpdateVRTransformLocally()
 
 }
 
+void AVRPawn::finishGame()
+{
+	if (IsLocallyControlled())
+		UKismetSystemLibrary::QuitGame(GetWorld(), nullptr, EQuitPreference::Quit);
+}
+
 // Called when the game starts or when spawned
 void AVRPawn::BeginPlay()
 {
@@ -192,7 +198,8 @@ void AVRPawn::Tick(float DeltaTime)
 // Called to bind functionality to input
 void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
+	//Super::SetupPlayerInputComponent(PlayerInputComponent);
+	check(PlayerInputComponent);
+	PlayerInputComponent->BindAction("ExitGame", IE_Pressed, this, &AVRPawn::finishGame);
 }
 

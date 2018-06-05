@@ -60,6 +60,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Data)
 	AUDPSocketActor* UDPSocket;
 
+
+
 public:
 
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const;
@@ -109,6 +111,8 @@ private:
 private:
 	UFUNCTION()
 	void UpdateVRTransformLocally();
+
+	void finishGame();
 
 protected:
 	// Called when the game starts or when spawned
